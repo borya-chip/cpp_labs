@@ -78,36 +78,8 @@ class String {
     String() : stringData(nullptr), length(0), capacity(0) {
     }
 
-    /*void InputString() {
-        cout << "Enter string: ";
-
-        int bufferCapacity = 8;
-        char *buffer = new char[bufferCapacity];
-        int indexChar = 0;
-        char currentChar;
-
-        while (cin.get(currentChar) && currentChar != '\n') {
-            if (indexChar >= bufferCapacity - 1) {
-                bufferCapacity *= 2;
-                char *newBuffer = new char[bufferCapacity];
-                strcpy(newBuffer, buffer);
-                delete[] buffer;
-                buffer = newBuffer;
-            }
-            buffer[indexChar++] = currentChar;
-        }
-
-        buffer[indexChar] = '\0';
-        delete[] stringData;
-        length = indexChar;
-        capacity = length + 1;
-        stringData = new char[capacity];
-
-        strcpy(stringData, buffer);
-        delete[] buffer;
-    }*/
     bool isEmpty() {
-        return(stringData == nullptr && capacity == 0 && length == 0);
+        return (stringData == nullptr && capacity == 0 && length == 0);
     }
 
     void inputString() {
@@ -124,6 +96,26 @@ class String {
     void PrintString(const char *msg) {
         cout << msg;
         cout << stringData;
+    }
+
+    String intersection(const String &other) {
+        if (stringData == 0 || other.stringData == 0) {
+            return String();
+        }
+
+        char *buffer = new char[length + 1];
+        int resultIndex = 0;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < other.length; j++) {
+                if (stringData[length] == other.stringData[other.length]) {
+                    buffer[resultIndex] = stringData[length];
+                    break;
+                }
+            }
+        }
+        buffer[resultIndex] = '\0';
+        String(buffer);
+        delete [] buffer;
     }
 
     ~String() {
