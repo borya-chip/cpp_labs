@@ -1,218 +1,142 @@
-#include <iostream>
 #include <cstring>
-#include <limits>
+#include <iostream>
 
-class MyString {
-private:
-    char* str;
-    size_t length;
+using namespace std;
 
-public:
-    MyString() : str(nullptr), length(0) {
-        str = new char[1];
-        str[0] = '\0';
+int myStrlen(const char *str) {
+    if (str == nullptr) {
+        return 0;
     }
 
-    MyString(const char* s) {
-        if (s == nullptr) {
-            str = new char[1];
-            str[0] = '\0';
+    int length = 0;
+
+    for (int index = 0; str[length] != '\0'; index++) {
+        length++;
+    }
+
+    return length;
+}
+
+char *resizeString(char *&str, int length) {
+    char *new_str = new char[length];
+
+    for (int index = 0; index < length; index++) {
+        new_str[index] = '\0';
+    }
+
+    for (int index = 0; str[index] != '\0'; index++) {
+        new_str[index] = str[index];
+    }
+
+    delete[] str;
+    str = nullptr;
+
+    return new_str;
+}
+
+char *getString(const char *msg) {
+    cout << msg;
+
+    int capacity = 1;
+    char *str = new char[capacity];
+    int check = 0;
+    int length = 0;
+
+    while (true) {
+        check = cin.get();
+
+        if ((char)check == '\n') {
+            break;
+        }
+
+        if (length + 1 == capacity) {
+            capacity *= 2;
+            str = resizeString(str, capacity);
+        }
+
+        str[length] = char(check);
+        length++;
+
+        if (str[0] == '\0') {
+            cout << "Error, string can not be empty,please try again!" << endl;
             length = 0;
-        } else {
-            length = strlen(s);
-            str = new char[length + 1];
-            strcpy(str, s);
-        }
-    }
-
-    MyString(const MyString& other) {
-        length = other.length;
-        str = new char[length + 1];
-        strcpy(str, other.str);
-    }
-
-    ~MyString() {
-        delete[] str;
-    }
-
-    MyString& operator=(const MyString& other) {
-        if (this != &other) {
-            delete[] str;
-            length = other.length;
-            str = new char[length + 1];
-            strcpy(str, other.str);
-        }
-        return *this;
-    }
-
-    void input() {
-        char buffer[1000];
-        std::cout << "Enter string: ";
-        std::cin.getline(buffer, 1000);
-
-        delete[] str;
-        length = strlen(buffer);
-        str = new char[length + 1];
-        strcpy(str, buffer);
-        
-        std::cout << "String successfully entered!\n";
-    }
-
-    void print() const {
-        if (str != nullptr) {
-            std::cout << "String: '" << str << "'\n";
-            std::cout << "Length: " << length << " characters\n";
-        } else {
-            std::cout << "String is empty\n";
-        }
-    }
-
-    MyString intersection(const MyString& other) const {
-        if (str == nullptr || other.str == nullptr || length == 0 || other.length == 0) {
-            return MyString();
+            capacity = 1;
         }
 
-        char* temp = new char[length + 1];
-        int count = 0;
+        str[length] = '\0';
+    }
+    return str;
+}
 
-        for (size_t i = 0; i < length; i++) {
-            if (strchr(other.str, str[i]) != nullptr && 
-                strchr(temp, str[i]) == nullptr) {
-                temp[count++] = str[i];
+class String {
+
+    char *stringData;
+    int length;
+    int capacity;
+
+  public:
+    String() : stringData(nullptr), length(0), capacity(0) {
+    }
+
+    /*void InputString() {
+        cout << "Enter string: ";
+
+        int bufferCapacity = 8;
+        char *buffer = new char[bufferCapacity];
+        int indexChar = 0;
+        char currentChar;
+
+        while (cin.get(currentChar) && currentChar != '\n') {
+            if (indexChar >= bufferCapacity - 1) {
+                bufferCapacity *= 2;
+                char *newBuffer = new char[bufferCapacity];
+                strcpy(newBuffer, buffer);
+                delete[] buffer;
+                buffer = newBuffer;
             }
+            buffer[indexChar++] = currentChar;
         }
-        temp[count] = '\0';
 
-        MyString result(temp);
-        delete[] temp;
-        return result;
+        buffer[indexChar] = '\0';
+        delete[] stringData;
+        length = indexChar;
+        capacity = length + 1;
+        stringData = new char[capacity];
+
+        strcpy(stringData, buffer);
+        delete[] buffer;
+    }*/
+    bool isEmpty() {
+        return(stringData == nullptr && capacity == 0 && length == 0);
     }
 
-    const char* c_str() const {
-        return str;
+    void inputString() {
+        if (stringData != nullptr) {
+            delete[] stringData;
+            stringData = nullptr;
+        }
+
+        stringData = getString("Enter string:");
+        length = myStrlen(stringData);
+        capacity = length + 1;
     }
 
-    size_t getLength() const {
-        return length;
+    void PrintString(const char *msg) {
+        cout << msg;
+        cout << stringData;
     }
 
-    bool isEmpty() const {
-        return length == 0 || str == nullptr || str[0] == '\0';
+    ~String() {
+        delete[] stringData;
+        stringData = nullptr;
+        length = 0;
+        capacity = 0;
     }
 };
 
-void clearInputBuffer() {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-}
-
-void showMenu() {
-    std::cout << "\n=== STRING OPERATIONS MENU ===\n";
-    std::cout << "1. Enter first string\n";
-    std::cout << "2. Enter second string\n";
-    std::cout << "3. Show first string\n";
-    std::cout << "4. Show second string\n";
-    std::cout << "5. Find strings intersection\n";
-    std::cout << "6. Show strings information\n";
-    std::cout << "7. Clear strings\n";
-    std::cout << "8. Exit program\n";
-    std::cout << "Choose action (1-8): ";
-}
-
 int main() {
-    setlocale(LC_ALL, "");
-    
-    MyString str1, str2;
-    int choice;
-    
-    std::cout << "String operations program\n";
-    
-    do {
-        showMenu();
-        std::cin >> choice;
-        clearInputBuffer();
-        
-        switch (choice) {
-            case 1: {
-                std::cout << "\n--- Enter first string ---\n";
-                str1.input();
-                break;
-            }
-            
-            case 2: {
-                std::cout << "\n--- Enter second string ---\n";
-                str2.input();
-                break;
-            }
-            
-            case 3: {
-                std::cout << "\n--- First string ---\n";
-                str1.print();
-                break;
-            }
-            
-            case 4: {
-                std::cout << "\n--- Second string ---\n";
-                str2.print();
-                break;
-            }
-            
-            case 5: {
-                std::cout << "\n--- Strings intersection ---\n";
-                if (str1.isEmpty() || str2.isEmpty()) {
-                    std::cout << "One or both strings are empty!\n";
-                    std::cout << "Please enter both strings first.\n";
-                } else {
-                    std::cout << "First string: ";
-                    str1.print();
-                    std::cout << "Second string: ";
-                    str2.print();
-                    
-                    MyString result = str1.intersection(str2);
-                    std::cout << "Intersection: ";
-                    result.print();
-                    
-                    if (result.isEmpty()) {
-                        std::cout << "No common characters found.\n";
-                    }
-                }
-                break;
-            }
-            
-            case 6: {
-                std::cout << "\n--- Strings information ---\n";
-                std::cout << "First string: ";
-                str1.print();
-                std::cout << "Second string: ";
-                str2.print();
-                break;
-            }
-            
-            case 7: {
-                std::cout << "\n--- Clear strings ---\n";
-                str1 = MyString();
-                str2 = MyString();
-                std::cout << "Strings cleared!\n";
-                break;
-            }
-            
-            case 8: {
-                std::cout << "\nExiting program...\n";
-                break;
-            }
-            
-            default: {
-                std::cout << "\nInvalid choice! Please choose from 1 to 8.\n";
-                break;
-            }
-        }
-        
-        if (choice != 8) {
-            std::cout << "\nPress Enter to continue...";
-            std::cin.get();
-        }
-        
-    } while (choice != 8);
-    
+    String myString;
+    myString.inputString();
+    myString.PrintString("\nEntered string: ");
     return 0;
 }
