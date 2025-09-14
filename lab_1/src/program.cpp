@@ -24,7 +24,7 @@ void Program::showString() const {
 
     str.print("\nString: ");
 
-    cout << "The string was successfully displayed on the screen using the String method(show)!" << endl;
+    cout << "\nThe string was successfully displayed on the screen using the String method(show)!" << endl;
 }
 
 void Program::intersectionStrings() {
@@ -36,7 +36,7 @@ void Program::intersectionStrings() {
     src.input("Please enter a string to intersect with the original string: ");
     String result = str.intersection(src);
     result.print("Intersection result: ");
-    cout << "Strings were successfully intersected!" << endl;
+    cout << "\nStrings were successfully intersected!" << endl;
 }
 
 void Program::run() {
