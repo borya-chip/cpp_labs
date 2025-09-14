@@ -73,7 +73,6 @@ class String {
         }
         stringData[length] = '\0';
 
-        cout << this <<"\nconst char constructor\n";
     }
 
     String(const String &other) : length(other.length), capacity(length + 1) {
@@ -84,7 +83,6 @@ class String {
         }
 
         stringData[length] = '\0';
-        cout << this <<"\nConstructor copy";
     }
 
     bool isEmpty() const {
