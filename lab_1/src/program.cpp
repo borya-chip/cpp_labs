@@ -35,8 +35,12 @@ void Program::intersectionStrings() {
     String src;
     src.input("Please enter a string to intersect with the original string: ");
     String result = str.intersection(src);
-    result.print("Intersection result: ");
-    cout << "\nStrings were successfully intersected!" << endl;
+    if (result.isEmpty()) {
+        cout << "Intersection result: No intersection" << endl;
+    } else {
+        result.print("Intersection result: ");
+        cout << "\nStrings were successfully intersected!" << endl;
+    }
 }
 
 void Program::run() {
