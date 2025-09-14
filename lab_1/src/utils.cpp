@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-
 int myStrlen(const char *str) {
-    if (!str) return 0;
+    if (!str)
+        return 0;
 
     int length = 0;
 
