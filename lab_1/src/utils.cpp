@@ -15,19 +15,18 @@ int myStrlen(const char *str) {
     return length;
 }
 
-char *resizeString(char *&str, int newCapacity) {
-    auto *new_str = new char[newCapacity];
-    int i = 0;
+char *resizeString(char *&str, const int len) {
+    auto *new_str = new char[len];
 
-    if (str) {
-        while (str[i] != '\0' && i < newCapacity - 1) {
-            new_str[i] = str[i];
-            i++;
-        }
-        delete[] str;
+    for (int ind = 0; ind < len; ind++) {
+        new_str[ind] = '\0';
     }
 
-    new_str[i] = '\0';
+    for (int ind = 0; str[ind] != '\0'; ind++) {
+        new_str[ind] = str[ind];
+    }
+
+    delete[] str;
     str = nullptr;
 
     return new_str;
