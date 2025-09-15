@@ -7,21 +7,21 @@ using namespace std;
 String::String() : stringData(nullptr), length(0), capacity(0) {
 }
 
-String::String(char *str) : length(myStrlen(str)), capacity(length + 1) {
+String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
     if (str == nullptr) {
         length = 0;
         capacity = 1;
-        stringData = new char[capacity];
-        stringData[0] = '\0';
         return;
     }
 
     stringData = new char[capacity];
+
     for (int i = 0; i < length; i++) {
         stringData[i] = str[i];
     }
+
     stringData[length] = '\0';
-    delete [] str;
+    delete[] str;
 }
 
 String::String(const String &other) : length(other.length), capacity(other.capacity) {
@@ -75,12 +75,10 @@ String String::intersection(const String &other) const {
 
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < other.length; j++) {
-            if (stringData[i] == other.stringData[j]) {
-                if (resultIndex < length) {
-                    buffer[resultIndex++] = stringData[i];
+            if (stringData[i] == other.stringData[j] && resultIndex < length) {
+                buffer[resultIndex++] = stringData[i];
 
-                    break;
-                }
+                break;
             }
         }
     }
