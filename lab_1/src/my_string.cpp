@@ -42,7 +42,7 @@ String & String::operator=(const String &other){
     return *this;
 }
 
-void String::input(const char *msg) {
+void String::input() {
     delete[] stringData;
     stringData = getString("Enter string: ");
     length = myStrlen(stringData);
