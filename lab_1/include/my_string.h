@@ -7,7 +7,7 @@ class String {
 
   public:
     String();
-    explicit String(const char *str);
+    explicit String(char *str);
     String(const String &other);
     String &operator=(const String &other);
     void input(const char *msg);
