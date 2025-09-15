@@ -51,7 +51,7 @@ String &String::operator=(const String &other) {
 
 void String::input(const char *msg) {
     delete[] stringData;
-    stringData = getString("Enter string: ");
+    stringData = getString(msg);
     length = myStrlen(stringData);
     capacity = length + 1;
 }
