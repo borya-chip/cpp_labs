@@ -8,11 +8,18 @@ String::String() : stringData(nullptr), length(0), capacity(0) {
 }
 
 String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
+     if (str == nullptr) {
+        length = 0;
+        capacity = 1;
+        return;
+    }
+
     stringData = new char[capacity];
 
     for (int i = 0; i < length; i++) {
         stringData[i] = str[i];
     }
+
     stringData[length] = '\0';
 }
 
@@ -42,7 +49,7 @@ String & String::operator=(const String &other){
     return *this;
 }
 
-void String::input() {
+void String::input(const char *msg) {
     delete[] stringData;
     stringData = getString("Enter string: ");
     length = myStrlen(stringData);
