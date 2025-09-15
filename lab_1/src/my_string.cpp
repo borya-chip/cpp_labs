@@ -8,7 +8,7 @@ String::String() : stringData(nullptr), length(0), capacity(0) {
 }
 
 String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
-     if (str == nullptr) {
+    if (str == nullptr) {
         length = 0;
         capacity = 1;
         return;
@@ -33,7 +33,7 @@ String::String(const String &other) : length(other.length), capacity(length + 1)
     stringData[length] = '\0';
 }
 
-String & String::operator=(const String &other){
+String &String::operator=(const String &other) {
     length = other.length;
     capacity = length + 1;
 
@@ -42,8 +42,8 @@ String & String::operator=(const String &other){
     }
     stringData = new char[other.capacity];
 
-    for(int i = 0;i < other.length;i++){
-      stringData[i] = other.stringData[i];
+    for (int i = 0; i < other.length; i++) {
+        stringData[i] = other.stringData[i];
     }
 
     return *this;
@@ -75,8 +75,11 @@ String String::intersection(const String &other) const {
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < other.length; j++) {
             if (stringData[i] == other.stringData[j]) {
-                buffer[resultIndex++] = stringData[i];
-                break;
+                if (resultIndex < length) {
+                    buffer[resultIndex++] = stringData[i];
+
+                    break;
+                } 
             }
         }
     }
