@@ -15,7 +15,7 @@ int myStrlen(const char *str) {
     return length;
 }
 
-char *resizeString(char *&str, const int len) {
+/*char *resizeString(char *&str, const int len) {
     auto *new_str = new char[len];
 
     for (int ind = 0; ind < len; ind++) {
@@ -29,6 +29,23 @@ char *resizeString(char *&str, const int len) {
     delete[] str;
     str = nullptr;
 
+    return new_str;
+}*/
+
+char *resizeString(char *&str, const int len) {
+    auto *new_str = new char[len];
+    int ind = 0;
+    // Copy valid characters from the old string
+    if (str) {
+        while (str[ind] != '\0' && ind < len - 1) {
+            new_str[ind] = str[ind];
+            ind++;
+        }
+    }
+    // Null-terminate
+    new_str[ind] = '\0';
+    delete[] str;
+    str = nullptr;
     return new_str;
 }
 
