@@ -23,8 +23,8 @@ String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
     stringData[length] = '\0';
 }
 
-String::String(const String &other) : length(other.length), capacity(other.capacity) {
-    stringData = new char[other.capacity];
+String::String(const String &other) : length(other.length), capacity(other.capacity), stringData(new char[other.capacity]) {
+   //stringData = new char[other.capacity];
 
     for (int i = 0; i < length; i++) {
         stringData[i] = other.stringData[i];
