@@ -16,7 +16,7 @@ int myStrlen(const char *str) {
 }
 
 char *resizeString(char *&str, int newCapacity) {
-    char *new_str = new char[newCapacity];
+    auto *new_str = new char[newCapacity];
     int i = 0;
 
     if (str) {
@@ -37,7 +37,7 @@ char *getString(const char *msg) {
     cout << msg;
 
     int capacity = 1;
-    char *str = new char[capacity];
+    auto *str = new char[capacity];
     int length = 0;
 
     while (true) {
