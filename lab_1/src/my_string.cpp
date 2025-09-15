@@ -11,20 +11,17 @@ String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
     if (str == nullptr) {
         length = 0;
         capacity = 1;
+        stringData = new char[capacity];
+        stringData[0] = '\0';
         return;
     }
 
     stringData = new char[capacity];
-
     for (int i = 0; i < length; i++) {
         stringData[i] = str[i];
     }
-
-    if (capacity > length) {
-        stringData[length] = '\0';
-    }
-
-    delete[] str;
+    stringData[length] = '\0';
+    delete [] str;
 }
 
 String::String(const String &other) : length(other.length), capacity(other.capacity) {
