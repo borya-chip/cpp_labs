@@ -69,7 +69,7 @@ String String::intersection(const String &other) const {
         return String();
     }
 
-    char *buffer = new char[length + 1];
+    auto *buffer = new char[length + 1];
     int resultIndex = 0;
 
     for (int i = 0; i < length; i++) {
