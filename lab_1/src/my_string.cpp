@@ -20,7 +20,11 @@ String::String(const char *str) : length(myStrlen(str)), capacity(length + 1) {
         stringData[i] = str[i];
     }
 
-    stringData[length] = '\0';
+    if (capacity > length) {
+        stringData[length] = '\0';
+    }
+
+    delete[] str;
 }
 
 String::String(const String &other) : length(other.length), capacity(other.capacity) {
@@ -79,14 +83,13 @@ String String::intersection(const String &other) const {
                     buffer[resultIndex++] = stringData[i];
 
                     break;
-                } 
+                }
             }
         }
     }
 
     buffer[resultIndex] = '\0';
     String result(buffer);
-    delete[] buffer;
 
     return result;
 }
