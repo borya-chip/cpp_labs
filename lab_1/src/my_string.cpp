@@ -7,14 +7,14 @@ using namespace std;
 String::String() : stringData(nullptr), length(0), capacity(0) {
 }
 
-String::String(const char *str) :stringData(new char[capacity]), length(myStrlen(str)), capacity(length + 1) {
+String::String(const char *str) :length(myStrlen(str)), capacity(length + 1) {
     if (str == nullptr) {
         length = 0;
         capacity = 1;
         return;
     }
 
-   // stringData = new char[capacity];
+   stringData = new char[capacity];
 
     for (int i = 0; i < length && str[i] != '\0'; i++) {
         stringData[i] = str[i];
@@ -25,7 +25,6 @@ String::String(const char *str) :stringData(new char[capacity]), length(myStrlen
 
 String::String(const String &other)
     : stringData(new char[other.capacity]), length(other.length), capacity(other.capacity) {
-    // stringData = new char[other.capacity];
 
     for (int i = 0; i < length; i++) {
         stringData[i] = other.stringData[i];
