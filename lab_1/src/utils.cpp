@@ -32,7 +32,7 @@ int myStrlen(const char *str) {
     return new_str;
 }*/
 
-char *resizeString(char *&str, const int len) {
+/*char *resizeString(char *&str, const int len) {
     auto *new_str = new char[len];
     int ind = 0;
     // Copy valid characters from the old string
@@ -47,12 +47,33 @@ char *resizeString(char *&str, const int len) {
     delete[] str;
     str = nullptr;
     return new_str;
+}*/
+char *resizeString(char *&str, const int len) {
+    auto *new_str = new char[len];
+    
+    // Обнуляем весь буфер
+    for (int i = 0; i < len; i++) {
+        new_str[i] = '\0';
+    }
+    
+    // Копируем только то, что влезает в новый размер
+    int i = 0;
+    while (str[i] != '\0' && i < len - 1) {  // ✅ ДВА условия!
+        new_str[i] = str[i];
+        i++;
+    }
+    new_str[i] = '\0';  // Гарантируем завершающий ноль
+    
+    delete[] str;
+    str = nullptr;  // ⚠️ А вот это странно - зачем возвращать и присваивать?
+    
+    return new_str;
 }
 
 char *getString(const char *msg) {
     cout << msg;
 
-    int capacity = 1;
+    int capacity = 16;
     auto *str = new char[capacity];
     int length = 0;
 
