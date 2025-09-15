@@ -2,7 +2,6 @@
 #include "utils.h"
 #include <iostream>
 
-
 using namespace std;
 
 String::String() : stringData(nullptr), length(0), capacity(0) {
@@ -25,6 +24,22 @@ String::String(const String &other) : length(other.length), capacity(length + 1)
     }
 
     stringData[length] = '\0';
+}
+
+String & String::operator=(const String &other){
+    length = other.length;
+    capacity = length + 1;
+
+    if (stringData != nullptr) {
+        delete[] stringData;
+    }
+    stringData = new char[other.capacity];
+
+    for(int i = 0;i < other.length;i++){
+      stringData[i] = other.stringData[i];
+    }
+
+    return *this;
 }
 
 void String::input(const char *msg) {
