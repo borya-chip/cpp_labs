@@ -15,7 +15,7 @@ int myStrlen(const char *str) {
     return length;
 }
 
-/*char *resizeString(char *&str, const int len) {
+char *resizeString(char *&str, const int len) {
     auto *new_str = new char[len];
 
     for (int ind = 0; ind < len; ind++) {
@@ -29,44 +29,6 @@ int myStrlen(const char *str) {
     delete[] str;
     str = nullptr;
 
-    return new_str;
-}*/
-
-/*char *resizeString(char *&str, const int len) {
-    auto *new_str = new char[len];
-    int ind = 0;
-    // Copy valid characters from the old string
-    if (str) {
-        while (str[ind] != '\0' && ind < len - 1) {
-            new_str[ind] = str[ind];
-            ind++;
-        }
-    }
-    // Null-terminate
-    new_str[ind] = '\0';
-    delete[] str;
-    str = nullptr;
-    return new_str;
-}*/
-char *resizeString(char *&str, const int len) {
-    auto *new_str = new char[len];
-    
-    // Обнуляем весь буфер
-    for (int i = 0; i < len; i++) {
-        new_str[i] = '\0';
-    }
-    
-    // Копируем только то, что влезает в новый размер
-    int i = 0;
-    while (str[i] != '\0' && i < len - 1) {  // ✅ ДВА условия!
-        new_str[i] = str[i];
-        i++;
-    }
-    new_str[i] = '\0';  // Гарантируем завершающий ноль
-    
-    delete[] str;
-    str = nullptr;  // ⚠️ А вот это странно - зачем возвращать и присваивать?
-    
     return new_str;
 }
 
