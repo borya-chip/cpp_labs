@@ -27,7 +27,7 @@ void Program::showString() const {
     cout << "\nThe string was successfully displayed on the screen using the String method(show)!" << endl;
 }
 
-void Program::intersectionStrings() {
+void Program::intersectionStrings() const{
     if (str.isEmpty()) {
         cout << "\nError, string has not been entered. Please use the first option and try again!" << endl;
         return;

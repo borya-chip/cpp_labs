@@ -6,7 +6,7 @@ class Program {
 
     void inputString();
     void showString() const;
-    void intersectionStrings();
+    void intersectionStrings()const;
 
   public:
     void run();
