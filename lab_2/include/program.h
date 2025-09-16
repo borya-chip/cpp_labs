@@ -1,12 +1,13 @@
 #pragma once
-#include "my_string.h"
+#include "string.h"
 
 class Program {
     String str;
 
     void inputString();
     void showString() const;
-    void intersectionStrings()const;
+    void encode();
+    void decode();
 
   public:
     void run();

@@ -11,6 +11,7 @@ void showTaskMenu() {
     std::cout << "\n\t\t\t\tMENU" << std::endl;
     std::cout << "1.Enter the string." << std::endl;
     std::cout << "2.Display the string." << std::endl;
-    std::cout << "3.Intersection the strings." << std::endl;
-    std::cout << "4.Exit the program." << std ::endl;
+    std::cout << "3.Encode the string." << std::endl;
+    std::cout << "4.Decode the string." << std::endl;
+    std::cout << "5.Exit the program." << std ::endl;
 }

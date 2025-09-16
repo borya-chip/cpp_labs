@@ -1,6 +1,6 @@
 #include "program.h"
 #include "menus.h"
-#include "my_string.h"
+#include "string.h"
 #include "utils.h"
 #include <iostream>
 
@@ -8,7 +8,7 @@ using namespace std;
 
 void Program::inputString() {
     if (str.isEmpty()) {
-        str.input("\nPlease enter the string: ");
+        input(str, "\nPlease enter the string: ");
         cout << "String successfully entered using String method(input)!" << endl;
         return;
     }
@@ -22,24 +22,36 @@ void Program::showString() const {
         return;
     }
 
-    str.print("\nString: ");
+    print(str, "\nString: ");
 
     cout << "\nThe string was successfully displayed on the screen using the String method(show)!" << endl;
 }
 
-void Program::intersectionStrings() const{
+void Program::encode() {
     if (str.isEmpty()) {
         cout << "\nError, string has not been entered. Please use the first option and try again!" << endl;
         return;
     }
-    String src;
-    src.input("Please enter a string to intersect with the original string: ");
-    String result = str.intersection(src);
-    if (result.isEmpty()) {
-        cout << "Intersection result: No intersection" << endl;
+    String codedStr = ++str;
+    if (codedStr.isEmpty()) {
+        cout << "Empty string" << endl;
     } else {
-        result.print("Intersection result: ");
-        cout << "\nStrings were successfully intersected!" << endl;
+        print(codedStr, "Encoding result: ");
+        cout << "\nStrings were successfully encoded!" << endl;
+    }
+}
+
+void Program::decode() {
+    if (str.isEmpty()) {
+        cout << "\nError, string has not been entered. Please use the first option and try again!" << endl;
+        return;
+    }
+    String decodeStr = --str;
+    if (decodeStr.isEmpty()) {
+        cout << "Empty string" << endl;
+    } else {
+        print(decodeStr, "Decoding result: ");
+        cout << "\nStrings were successfully coded!" << endl;
     }
 }
 
@@ -61,9 +73,12 @@ void Program::run() {
             showString();
             break;
         case 3:
-            intersectionStrings();
+            encode();
             break;
         case 4:
+            decode();
+            break;
+        case 5:
             cout << "\nYou have successfully exited the program." << endl;
             return;
         default:
