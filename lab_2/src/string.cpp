@@ -7,8 +7,8 @@ using namespace std;
 String::String() : stringData(nullptr), length(0), capacity(0) {
 }
 
-String::String(const String &other) : stringData(new char[capacity]),length(other.length), capacity(other.capacity) {
-
+String::String(const String &other) : length(other.length), capacity(other.capacity) {
+    stringData = new char[capacity];
     
     for (int i = 0; i < length; i++) {
         stringData[i] = other.stringData[i];
