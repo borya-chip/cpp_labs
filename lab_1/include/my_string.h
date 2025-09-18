@@ -1,12 +1,12 @@
 #pragma once
 
 class String {
-    char *stringData;
-    int length;
-    int capacity;
+    char *stringData = nullptr;
+    int length = 0;
+    int capacity = 0;
 
   public:
-    String();
+    String() = default;
     explicit String(const char *str);
     String(const String &other);
     String &operator=(const String &other);

@@ -4,9 +4,6 @@
 
 using namespace std;
 
-String::String() : stringData(nullptr), length(0), capacity(0) {
-}
-
 String::String(const char *str) :length(myStrlen(str)), capacity(length + 1) {
     if (str == nullptr) {
         length = 0;
