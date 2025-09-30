@@ -8,7 +8,7 @@ class Student {
     string name;
 
   public:
-    Student(const string &name);
+    explicit Student(const string &name);
     virtual void inputStudent();
     virtual void display() const;
 };
