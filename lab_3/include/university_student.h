@@ -3,8 +3,6 @@
 #include<string>
 #include "student.h"
 
-using namespace std;
-
 class UniversityStudent : public Student {
     string university;
     int course;
