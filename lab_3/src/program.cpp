@@ -1,0 +1,124 @@
+#include <iostream>
+#include "menus.h"
+#include "program.h"
+#include "school_student.h"
+#include <string>
+#include "student.h"
+#include "university_student.h"
+#include "utils.h"
+
+Student *Program::createStudent() {
+    showStudentMenu();
+    int choice = 0;
+    choice = getDigit();
+
+    if (choice == 0)
+        return nullptr;
+
+    Student *student = nullptr;
+
+    if (choice == 1) {
+        SchoolStudent *schoolStudent = new SchoolStudent();
+        schoolStudent->inputStudent();
+        student = schoolStudent;
+    } else if (choice == 2) {
+        UniversityStudent *universityStudent = new UniversityStudent();
+        universityStudent->inputStudent();
+        student = universityStudent;
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    return student;
+}
+
+void Program::addStudent() {
+    if (count >= capacity) {
+        capacity *= 2;
+        Student **newStudents = new Student *[capacity];
+
+        for (int i = 0; i < count; i++) {
+            newStudents[i] = students[i];
+        }
+
+        delete[] students;
+        students = newStudents;
+    }
+
+    Student *newStudent = createStudent();
+    if (newStudent != nullptr) {
+        students[count] = newStudent;
+        count++;
+        cout << "Student added successfully!" << endl;
+    }
+}
+
+void Program::displayStudents() {
+    if (count == 0) {
+        cout << "No students to display." << endl;
+        return;
+    }
+
+    cout << "\n=== SCHOOL STUDENTS ===" << endl;
+    int schoolCount = 0;
+    for (int i = 0; i < count; i++) {
+        SchoolStudent *schoolStudent = dynamic_cast<SchoolStudent *>(students[i]);
+        if (schoolStudent != nullptr) {
+            schoolCount++;
+            cout << schoolCount << ". ";
+            schoolStudent->display();
+        }
+    }
+    if (schoolCount == 0) {
+        cout << "No school students found." << endl;
+    }
+
+    cout << "\n=== UNIVERSITY STUDENTS ===" << endl;
+    int universityCount = 0;
+    for (int i = 0; i < count; i++) {
+        UniversityStudent *universityStudent = dynamic_cast<UniversityStudent *>(students[i]);
+        if (universityStudent != nullptr) {
+            universityCount++;
+            cout << universityCount << ". ";
+            universityStudent->display();
+        }
+    }
+    if (universityCount == 0) {
+        cout << "No university students found." << endl;
+    }
+}
+
+Program::Program() : capacity(10), count(0) {
+    students = new Student *[capacity];
+}
+
+Program::~Program() {
+    for (int i = 0; i < count; i++) {
+        delete students[i];
+    }
+    delete[] students;
+}
+
+void Program::run() {
+    while (true) {
+        showTaskMenu();
+
+        int choice = 0;
+        choice = getDigit();
+
+        switch (choice) {
+        case 1:
+            addStudent();
+            break;
+        case 2:
+            system("cls");
+            displayStudents();
+            break;
+        case 3:
+            cout << "\nYou have successfully exited the program." << endl;
+            return;
+        default:
+            cout << "Invalid choice! Try again." << endl;
+        }
+    }
+}
