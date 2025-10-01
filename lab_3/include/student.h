@@ -11,6 +11,7 @@ class Student {
     virtual void inputStudent();
     virtual void display() const;
     std::string getName() const;
+    Student(const Student&) = delete;
     virtual ~Student() = default;
 };
 
