@@ -92,6 +92,10 @@ void Program::displayStudents() const {
     }
 }
 
+Program::Program(){
+   students = new Student *[capacity];   
+}
+
 Program::~Program() {
     for (int i = 0; i < count; i++) {
         delete students[i];

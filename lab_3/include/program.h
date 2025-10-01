@@ -4,7 +4,7 @@
 
 class Program {
   private:
-    Student **students = new Student *[10];
+    Student **students;
     int capacity = 10;
     int count = 0;
     
@@ -14,7 +14,7 @@ class Program {
     void displayStudents()const;
 
   public:
-    Program() = default;
+    Program();
     Program& operator=(const Program&) = delete;
     Program(const Program&) = delete;
     ~Program();
