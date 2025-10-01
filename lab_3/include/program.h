@@ -10,7 +10,7 @@ class Program {
 
     Student *createStudent();
     void addStudent();
-    void displayStudents();
+    void displayStudents()const;
 
   public:
     Program();

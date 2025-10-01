@@ -54,7 +54,7 @@ void Program::addStudent() {
     }
 }
 
-void Program::displayStudents() {
+void Program::displayStudents() const {
     if (count == 0) {
         cout << "No students to display." << endl;
         return;
@@ -63,7 +63,7 @@ void Program::displayStudents() {
     cout << "\n=== SCHOOL STUDENTS ===" << endl;
     int schoolCount = 0;
     for (int i = 0; i < count; i++) {
-        SchoolStudent *schoolStudent = dynamic_cast<SchoolStudent *>(students[i]);
+        auto *schoolStudent = dynamic_cast<SchoolStudent *>(students[i]);
         if (schoolStudent != nullptr) {
             schoolCount++;
             cout << schoolCount << ". ";
@@ -77,7 +77,7 @@ void Program::displayStudents() {
     cout << "\n=== UNIVERSITY STUDENTS ===" << endl;
     int universityCount = 0;
     for (int i = 0; i < count; i++) {
-        UniversityStudent *universityStudent = dynamic_cast<UniversityStudent *>(students[i]);
+        auto *universityStudent = dynamic_cast<UniversityStudent *>(students[i]);
         if (universityStudent != nullptr) {
             universityCount++;
             cout << universityCount << ". ";
