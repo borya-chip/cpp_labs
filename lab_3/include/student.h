@@ -11,5 +11,6 @@ class Student {
     explicit Student(const std::string &name);
     virtual void inputStudent();
     virtual void display() const;
+    virtual ~Student() = default;
 };
 
