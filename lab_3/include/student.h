@@ -12,6 +12,7 @@ class Student {
     virtual void display() const;
     std::string getName() const;
     Student(const Student&) = delete;
+    Student& operator=(const Student&) = delete;
     virtual ~Student() = default;
 };
 
