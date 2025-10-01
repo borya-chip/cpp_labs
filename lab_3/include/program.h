@@ -4,9 +4,10 @@
 
 class Program {
   private:
+    Student **students = new Student *[10];
     int capacity = 10;
     int count = 0;
-    Student **students = new Student *[capacity];
+    
 
     Student *createStudent();
     void addStudent();
