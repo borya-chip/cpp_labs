@@ -31,6 +31,8 @@ Student *Program::createStudent() {
     return student;
 }
 
+#include <cassert>
+
 void Program::addStudent() {
     Student *newStudent = createStudent();
     if (newStudent == nullptr) {
@@ -50,15 +52,14 @@ void Program::addStudent() {
         capacity = newCapacity;
     }
 
-    if (count < capacity) {
-        students[count] = newStudent;
-        count++;
-        cout << "Student added successfully!" << endl;
-    } else {
-        delete newStudent;
-        cout << "Error: capacity exceeded!" << endl;
-    }
+    assert(count < capacity);
+
+    students[count] = newStudent;
+    count++;
+    
+    cout << "Student added successfully!" << std::endl;
 }
+
 
 void Program::displayStudents() const {
     if (count == 0) {
