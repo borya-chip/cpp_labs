@@ -5,8 +5,8 @@
 class Program {
   private:
     Student **students;
-    int capacity;
-    int count;
+    int capacity = 10;
+    int count = 0;
 
     Student *createStudent();
     void addStudent();

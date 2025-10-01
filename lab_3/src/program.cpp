@@ -89,7 +89,7 @@ void Program::displayStudents() const {
     }
 }
 
-Program::Program() : capacity(10), count(0) {
+Program::Program(){
     students = new Student *[capacity];
 }
 
