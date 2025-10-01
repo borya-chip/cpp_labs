@@ -42,7 +42,9 @@ void Program::addStudent() {
         auto **newStudents = new Student *[newCapacity]();
 
         for (int i = 0; i < count; i++) {
-            newStudents[i] = students[i];
+              if (students[i] != nullptr) { 
+                newStudents[i] = students[i];
+            }
         }
 
         delete[] students;
