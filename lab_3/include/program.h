@@ -4,7 +4,7 @@
 
 class Program {
   private:
-    Student **students = nullptr;
+    Student **students;
     int capacity = 10;
     unsigned int count = 0;
 
