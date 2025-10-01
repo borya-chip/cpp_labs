@@ -14,8 +14,8 @@ class Program {
 
   public:
     Program() = default;
-    Program(const Program&) = delete;
     Program& operator=(const Program&) = delete;
+    Program(const Program&) = delete;
     ~Program();
     void run();
 };
