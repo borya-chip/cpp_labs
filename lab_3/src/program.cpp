@@ -38,7 +38,7 @@ void Program::addStudent() {
     if (newStudent == nullptr) {
         return;
     }
-    
+
     if (count >= capacity) {
         int requiredCapacity = count + 1;
         int newCapacity = capacity * 2;
@@ -46,7 +46,7 @@ void Program::addStudent() {
             newCapacity = requiredCapacity;
         }
 
-        Student **newStudents = new Student *[newCapacity]();
+        auto **newStudents = new Student *[newCapacity]();
 
         for (int i = 0; i < count; i++) {
             newStudents[i] = students[i];
