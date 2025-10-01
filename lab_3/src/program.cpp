@@ -88,8 +88,6 @@ void Program::displayStudents() const {
     }
 }
 
-Program::Program() : capacity(10), count(0), students(new Student*[10]()) {}
-
 Program::~Program() {
     for (int i = 0; i < count; i++) {
         delete students[i];

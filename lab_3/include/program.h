@@ -6,15 +6,15 @@ class Program {
   private:
     static constexpr int DEFAULT_CAPACITY = 10;
     int capacity = DEFAULT_CAPACITY;
-    int count;
-    Student **students;
+    int count = 0;
+    Student **students = new Student *[capacity]();
 
     Student *createStudent();
     void addStudent();
     void displayStudents()const;
 
   public:
-    Program();
+    Program() = default;
     Program(const Program&) = delete;
     Program& operator=(const Program&) = delete;
     ~Program();
