@@ -59,7 +59,7 @@ void Program::addStudent() {
 
     students[count] = newStudent;
     count++;
-    std::cout << "Student added successfully!" << std::endl;
+    cout << "Student added successfully!" << endl;
 }
 
 
