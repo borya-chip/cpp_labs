@@ -50,9 +50,14 @@ void Program::addStudent() {
         capacity = newCapacity;
     }
 
-    students[count] = newStudent;
-    count++;
-    cout << "Student added successfully!" << endl;
+    if (count < capacity) {
+        students[count] = newStudent;
+        count++;
+        cout << "Student added successfully!" << endl;
+    } else {
+        delete newStudent;
+        cout << "Error: capacity exceeded!" << endl;
+    }
 }
 
 void Program::displayStudents() const {
