@@ -4,16 +4,16 @@
 
 class Program {
   private:
-    int capacity = 10;
-    int count = 0;
-    Student **students = new Student*[capacity]();
+    int capacity;
+    int count;
+    Student **students;
 
     Student *createStudent();
     void addStudent();
     void displayStudents()const;
 
   public:
-    Program() = default;
+    Program();
     Program(const Program&) = delete;
     Program& operator=(const Program&) = delete;
     ~Program();
