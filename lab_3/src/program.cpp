@@ -31,14 +31,9 @@ Student *Program::createStudent() {
     return student;
 }
 
-#include <cassert>
+
 
 void Program::addStudent() {
-    Student *newStudent = createStudent();
-    if (newStudent == nullptr) {
-        return;
-    }
-
     if (count >= capacity) {
         int newCapacity = capacity * 2;
         auto **newStudents = new Student *[newCapacity]();
@@ -52,13 +47,14 @@ void Program::addStudent() {
         capacity = newCapacity;
     }
 
-    assert(count < capacity);
-
-    students[count] = newStudent;
-    count++;
-    
-    cout << "Student added successfully!" << std::endl;
+    Student *newStudent = createStudent();
+    if (newStudent != nullptr) {
+        students[count] = newStudent;
+        count++;
+        cout << "Student added successfully!" << std::endl;
+    }
 }
+
 
 
 void Program::displayStudents() const {
