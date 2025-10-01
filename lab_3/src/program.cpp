@@ -7,51 +7,50 @@
 #include "university_student.h"
 #include "utils.h"
 
-Student *Program::createStudent() {
-    showStudentMenu();
-    int choice = 0;
-    choice = getDigit();
+  Student* Program::createStudent() {
+        showStudentMenu();
+        int choice = getDigit();
 
-    if (choice == 0)
-        return nullptr;
+        if (choice == 0)
+            return nullptr;
 
-    Student *student = nullptr;
+        Student* student = nullptr;
 
-    if (choice == 1) {
-        SchoolStudent *schoolStudent = new SchoolStudent();
-        schoolStudent->inputStudent();
-        student = schoolStudent;
-    } else if (choice == 2) {
-        UniversityStudent *universityStudent = new UniversityStudent();
-        universityStudent->inputStudent();
-        student = universityStudent;
-    } else {
-        cout << "Invalid choice!" << endl;
-    }
-
-    return student;
-}
-
-void Program::addStudent() {
-    if (count >= capacity) {
-        capacity *= 2;
-        Student **newStudents = new Student *[capacity];
-
-        for (int i = 0; i < count; i++) {
-            newStudents[i] = students[i];
+        if (choice == 1) {
+            student = new SchoolStudent();
+        } else if (choice == 2) {
+            student = new UniversityStudent();
+        } else {
+            cout << "Invalid choice!" << endl;
+            return nullptr;
         }
 
-        delete[] students;
-        students = newStudents;
+        student->inputStudent();
+        return student;
     }
 
-    Student *newStudent = createStudent();
-    if (newStudent != nullptr) {
-        students[count] = newStudent;
-        count++;
-        cout << "Student added successfully!" << endl;
+    void Program::addStudent() {
+        if (count >= capacity) {
+            int newCapacity = capacity * 2;
+            Student** newStudents = new Student*[newCapacity];
+         
+            for (int i = 0; i < count; i++) {
+                newStudents[i] = students[i];
+            }
+         
+            delete[] students;
+      
+            students = newStudents;
+            capacity = newCapacity;
+        }
+        
+        Student* newStudent = createStudent();
+        if (newStudent != nullptr) {
+            students[count] = newStudent;
+            count++;
+            cout << "Student added successfully!" << endl;
+        }
     }
-}
 
 void Program::displayStudents() {
     if (count == 0) {
