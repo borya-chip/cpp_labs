@@ -6,7 +6,7 @@ class Program {
   private:
     Student **students;
     int capacity = 10;
-    unsigned int count = 0;
+    int count = 0;
 
     Student *createStudent();
     void addStudent();
