@@ -4,7 +4,6 @@
 #include<string>
 
 class Student {
-  protected:
     std::string name;
 
   public:

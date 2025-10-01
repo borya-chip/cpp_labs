@@ -1,15 +1,15 @@
-   #include "student.h"
+#include "student.h"
 
-   using namespace std;
+using namespace std;
 
-      Student::Student(const string &name) : name(name) {
-      }
+Student::Student(const string &name) : name(name) {
+}
 
-      void Student::inputStudent() {
-         cout << "Enter name: ";
-         getline(cin, name);
-      }
+void Student::inputStudent() {
+    cout << "Enter name: ";
+    getline(cin, name);
+}
 
-      void Student::display() const {
-         cout << "Student: " << name;
-      }
+void Student::display() const {
+    cout << "Student: " << name;
+}
