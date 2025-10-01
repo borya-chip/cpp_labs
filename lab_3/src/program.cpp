@@ -42,11 +42,10 @@ void Program::addStudent() {
         auto **newStudents = new Student *[newCapacity]{};
 
         for (int i = 0; i < count; i++) {
-                newStudents[i] = students[i];
+            newStudents[i] = students[i]; 
         }
 
         delete[] students;
-
         students = newStudents;
         capacity = newCapacity;
     }
