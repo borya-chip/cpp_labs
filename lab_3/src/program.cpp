@@ -32,6 +32,11 @@ Student *Program::createStudent() {
 }
 
 void Program::addStudent() {
+    if (count < 0) count = 0;
+    if (students == nullptr) {
+        students = new Student *[capacity];
+    }
+    
     if (count >= capacity) {
         int newCapacity = capacity * 2;
         auto **newStudents = new Student *[newCapacity];
