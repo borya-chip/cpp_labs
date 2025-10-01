@@ -1,5 +1,7 @@
 #include "school_student.h"
 
+using namespace std;
+
    SchoolStudent::SchoolStudent(const string &name, const string &school, int grade) : Student(name), school(school), grade(grade) {
     }
    SchoolStudent::SchoolStudent() : Student(""), school(""), grade(0) {

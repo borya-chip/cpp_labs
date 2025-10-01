@@ -5,10 +5,10 @@
 
 class Student {
   protected:
-    string name;
+    std::string name;
 
   public:
-    explicit Student(const string &name);
+    explicit Student(const std::string &name);
     virtual void inputStudent();
     virtual void display() const;
 };
