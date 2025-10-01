@@ -34,9 +34,19 @@ Student *Program::createStudent() {
 
 
 void Program::addStudent() {
+    Student *newStudent = createStudent();
+    if (newStudent == nullptr) {
+        return;
+    }
+    
     if (count >= capacity) {
+        int requiredCapacity = count + 1;
         int newCapacity = capacity * 2;
-        auto **newStudents = new Student *[newCapacity]();
+        if (newCapacity < requiredCapacity) {
+            newCapacity = requiredCapacity;
+        }
+
+        Student **newStudents = new Student *[newCapacity]();
 
         for (int i = 0; i < count; i++) {
             newStudents[i] = students[i];
@@ -47,13 +57,11 @@ void Program::addStudent() {
         capacity = newCapacity;
     }
 
-    Student *newStudent = createStudent();
-    if (newStudent != nullptr) {
-        students[count] = newStudent;
-        count++;
-        cout << "Student added successfully!" << std::endl;
-    }
+    students[count] = newStudent;
+    count++;
+    std::cout << "Student added successfully!" << std::endl;
 }
+
 
 
 
