@@ -32,6 +32,11 @@ Student *Program::createStudent() {
 }
 
 void Program::addStudent() {
+    Student *newStudent = createStudent();
+    if (newStudent == nullptr) {
+        return;
+    }
+
     if (count >= capacity) {
         int newCapacity = capacity * 2;
         auto **newStudents = new Student *[newCapacity]();
@@ -45,16 +50,9 @@ void Program::addStudent() {
         capacity = newCapacity;
     }
 
-    Student *newStudent = createStudent();
-    if (newStudent != nullptr) {
-        if (count < capacity) {
-            students[count] = newStudent;
-            count++;
-            cout << "Student added successfully!" << endl;
-        } else {
-            cout << "Error: capacity exceeded!" << endl;
-        }
-    }
+    students[count] = newStudent;
+    count++;
+    cout << "Student added successfully!" << endl;
 }
 
 void Program::displayStudents() const {
