@@ -4,7 +4,8 @@
 
 class Program {
   private:
-    int capacity;
+    static constexpr int DEFAULT_CAPACITY = 10;
+    int capacity = DEFAULT_CAPACITY;
     int count;
     Student **students;
 
