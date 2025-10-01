@@ -9,7 +9,7 @@ using namespace std;
     }
 
     void UniversityStudent::display() const{
-        cout << name << ", " << university << ", course " << course << endl;
+        cout << getName() << ", " << university << ", course " << course << endl;
     }
 
     void UniversityStudent::inputStudent(){

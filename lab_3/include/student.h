@@ -10,6 +10,7 @@ class Student {
     explicit Student(const std::string &name);
     virtual void inputStudent();
     virtual void display() const;
+    std::string getName() const;
     virtual ~Student() = default;
 };
 

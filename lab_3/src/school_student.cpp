@@ -8,7 +8,7 @@ using namespace std;
     }
 
     void SchoolStudent::display() const{
-        cout << name << ", " << school << ", grade " << grade << endl;
+        cout << getName() << ", " << school << ", grade " << grade << endl;
     }
 
     void SchoolStudent::inputStudent(){

@@ -13,3 +13,7 @@ void Student::inputStudent() {
 void Student::display() const {
     cout << "Student: " << name;
 }
+
+string Student::getName() const {
+   return name;
+}
