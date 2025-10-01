@@ -34,25 +34,22 @@ Student *Program::createStudent() {
 void Program::addStudent() {
     if (count < 0) count = 0;
     if (students == nullptr) {
-        students = new Student *[capacity]();
+        students = new Student *[capacity]{};
     }
 
     if (count >= capacity) {
         int newCapacity = capacity * 2;
-        auto **newStudents = new Student *[newCapacity]();
-
+        auto **newStudents = new Student *[newCapacity]{};  // Фигурные скобки!
+        
         for (int i = 0; i < count; i++) {
-              if (students[i] != nullptr) { 
-                newStudents[i] = students[i];
-            }
+            newStudents[i] = students[i];
         }
-
+        
         delete[] students;
-
         students = newStudents;
         capacity = newCapacity;
     }
-
+    
     Student *newStudent = createStudent();
     if (newStudent != nullptr) {
         students[count] = newStudent;
