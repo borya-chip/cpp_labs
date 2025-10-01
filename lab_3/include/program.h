@@ -4,10 +4,9 @@
 
 class Program {
   private:
-    static constexpr int DEFAULT_CAPACITY = 10;
-    int capacity = DEFAULT_CAPACITY;
+    int capacity = 10;
     int count = 0;
-    Student **students = new Student *[capacity]();
+    Student **students = new Student *[capacity];
 
     Student *createStudent();
     void addStudent();
