@@ -62,9 +62,6 @@ void Program::addStudent() {
     cout << "Student added successfully!" << endl;
 }
 
-
-
-
 void Program::displayStudents() const {
     if (count == 0) {
         cout << "No students to display." << endl;
