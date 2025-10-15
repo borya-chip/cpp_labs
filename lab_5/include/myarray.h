@@ -31,21 +31,25 @@ template <typename T> class MyArray {
     }
 };
 
-template <typename T> MyArray<T>::~MyArray() {
+template <typename T> 
+MyArray<T>::~MyArray() {
     delete[] data;
 }
 
-template <typename T> T &MyArray<T>::operator[](int ind) {
+template <typename T> 
+T &MyArray<T>::operator[](int ind) {
     return data[ind];
 }
 
-template <typename T> MyArray<T>::MyArray(const MyArray &other) : data(new T[other.size]), size(other.size) {
+template <typename T> 
+MyArray<T>::MyArray(const MyArray &other) : data(new T[other.size]), size(other.size) {
     for (int i = 0; i < other.size; i++) {
         data[i] = other.data[i];
     }
 }
 
-template <typename T> MyArray<T> &MyArray<T>::operator=(const MyArray &other) {
+template <typename T> 
+MyArray<T> &MyArray<T>::operator=(const MyArray &other) {
     if (&other != this) {
         delete[] data;
         size = other.size;
@@ -59,14 +63,16 @@ template <typename T> MyArray<T> &MyArray<T>::operator=(const MyArray &other) {
     return *this;
 }
 
-template <typename T> void MyArray<T>::printArray() {
+template <typename T> 
+void MyArray<T>::printArray() {
     for (int i = 0; i < size; i++) {
         std::cout << data[i] << "\t";
         std::cout << std::endl;
     }
 }
 
-template <typename T> void MyArray<T>::pushElement(const T &element) {
+template <typename T> 
+void MyArray<T>::pushElement(const T &element) {
     auto *newData = new T[size + 1];
 
     for (int i = 0; i < size; i++) {
