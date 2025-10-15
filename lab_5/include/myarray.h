@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include<iostream>
 
 
 template <typename T>
