@@ -3,7 +3,7 @@
 
 template <typename T>
 class MyArray {
-    T* data;
+    T* data = nullptr;
     int size = 0;
 
    public:
@@ -11,7 +11,7 @@ class MyArray {
     friend std::ostream& operator<<(std::ostream& os, const MyArray<U>& array);
     template <typename U>
     friend std::istream& operator>>(std::istream& in, MyArray<U>& array);
-    MyArray() : data(nullptr){}
+    MyArray() = default;
     ~MyArray();
     T& operator[](int ind);
     MyArray(const MyArray& other);
