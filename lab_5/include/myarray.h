@@ -31,9 +31,7 @@ T& MyArray<T>::operator[](int ind) {
 }
 
 template <typename T>
-MyArray<T>::MyArray(const MyArray& other) : size(other.size) {
-    data = new T[other.size];
-
+MyArray<T>::MyArray(const MyArray& other) : data(new T[other.size]),size(other.size) {
     for (int i = 0; i < other.size; i++) {
         data[i] = other.data[i];
     }
