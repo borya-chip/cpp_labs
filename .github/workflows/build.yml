@@ -43,6 +43,20 @@ jobs:
           mkdir lab_3/build
           cmake -S lab_3 -B lab_3/build 
           build-wrapper-linux-x86-64 --out-dir lab_3/build_wrapper cmake --build lab_3/build --config Release
+
+      - name: Build lab_4
+        run: |
+          rm -rf lab_4/build
+          mkdir lab_4/build
+          cmake -S lab_4 -B lab_4/build 
+          build-wrapper-linux-x86-64 --out-dir lab_4/build_wrapper cmake --build lab_4/build --config Release
+
+      - name: Build lab_5
+        run: |
+          rm -rf lab_5/build
+          mkdir lab_5/build
+          cmake -S lab_5 -B lab_5/build 
+          build-wrapper-linux-x86-64 --out-dir lab_5/build_wrapper cmake --build lab_5/build --config Release
           
 
       - name: SonarCloud scan lab_1
@@ -81,5 +95,31 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab_3
             -Dsonar.cfamily.compile-commands=lab_3/build_wrapper/compile_commands.json
+            -Dsonar.coverage.exclusions=**
+            -Dsonar.cfamily.skipCoverage=true      
+
+      - name: SonarCloud scan lab_4
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=borya-chip_cpp_lab4
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab_4
+            -Dsonar.cfamily.compile-commands=lab_4/build_wrapper/compile_commands.json
+            -Dsonar.coverage.exclusions=**
+            -Dsonar.cfamily.skipCoverage=true  
+
+      - name: SonarCloud scan lab_5
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=borya-chip_cpp_lab5
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab_5
+            -Dsonar.cfamily.compile-commands=lab_5/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true      
