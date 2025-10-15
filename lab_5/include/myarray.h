@@ -4,14 +4,14 @@
 template <typename T>
 class MyArray {
     T* data;
-    int size;
+    int size = 0;
 
    public:
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const MyArray<U>& array);
     template <typename U>
     friend std::istream& operator>>(std::istream& in, MyArray<U>& array);
-    MyArray() : data(nullptr), size(0) {}
+    MyArray() : data(nullptr){}
     ~MyArray();
     T& operator[](int ind);
     MyArray(const MyArray& other);
