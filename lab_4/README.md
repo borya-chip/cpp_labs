@@ -2,4 +2,4 @@
 
 ## Мое задание
 > Создать абстрактный базовый класс «Учащийся» и производные классы «Школьник» и «Студент».Создать массив объектов базового класса и заполнить этот массив объектами. Показать отдельно студентов и школьников. 
-### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/summary/overall?id=borya-chip_cpp_lab2&branch=main)
+### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/project/overview?id=borya-chip_cpp_lab4)

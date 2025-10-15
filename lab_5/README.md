@@ -2,4 +2,4 @@
 
 ## Мое задание
 > Создать параметризованный массив с конструкторами, деструктором и перегруженными операторами [], =, вывода и ввода в поток.
-### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/summary/overall?id=borya-chip_cpp_lab2&branch=main)
+### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/summary/overall?id=borya-chip_cpp_labs&branch=main)
