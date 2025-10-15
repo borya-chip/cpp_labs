@@ -1,5 +1,4 @@
 #pragma once
-#include <iomanip>
 #include <iostream>
 
 
@@ -59,7 +58,7 @@ MyArray<T>& MyArray<T>::operator=(const MyArray& other) {
 template <typename T>
 void MyArray<T>::printArray() {
     for (int i = 0; i < size; i++) {
-        std::cout << std::setw(3) << data[i];
+        std::cout << data[i] << "\t";
         std::cout << std::endl;
     }
 }
@@ -81,7 +80,7 @@ void MyArray<T>::pushElement(const T& element) {
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const MyArray<T>& array) {
     for (int i = 0; i < array.size; i++) {
-        os << std::setw(3) << array.data[i];
+        os << array.data[i] << "\t";
     }
     
     os << std::endl;
