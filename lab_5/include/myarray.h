@@ -64,7 +64,7 @@ void MyArray<T>::printArray() {
 
 template <typename T>
 void MyArray<T>::pushElement(const T& element) {
-    T* newData = new T[size + 1];
+    auto* newData = new T[size + 1];
 
     for (int i = 0; i < size; i++) {
         newData[i] = data[i];
