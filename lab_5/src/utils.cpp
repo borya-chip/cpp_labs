@@ -8,10 +8,8 @@ T getValue() {
     T value;
 
     while (true) {
-        if (cin >> value) {
-            if (cin.get() == '\n') {
+        if (cin >> value && cin.get() == '\n') {
                 return value;
-            }
         }
 
         cin.clear();
