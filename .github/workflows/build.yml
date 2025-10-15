@@ -117,7 +117,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=borya-chip_cpp_lab5
+            -Dsonar.projectKey=borya-chip_cpp_labs
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab_5
             -Dsonar.cfamily.compile-commands=lab_5/build_wrapper/compile_commands.json

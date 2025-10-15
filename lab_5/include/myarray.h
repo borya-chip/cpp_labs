@@ -1,7 +1,6 @@
 #pragma once
 #include<iostream>
 
-
 template <typename T>
 class MyArray {
     T* data;
