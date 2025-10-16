@@ -7,8 +7,6 @@ class Program {
     Student **students;
     int capacity = 10;
     int count = 0;
-    
-
     Student *createStudent();
     void addStudent();
     void Program::displayStudents() const;
