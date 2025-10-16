@@ -68,32 +68,26 @@ void Program::displayStudents() const {
         return;
     }
 
-    cout << "\n=== SCHOOL STUDENTS ===" << endl;
-    int schoolCount = 0;
-    for (int i = 0; i < count; i++) {
-        const auto *schoolStudent = dynamic_cast<SchoolStudent *>(students[i]);
-        if (schoolStudent != nullptr) {
-            schoolCount++;
-            cout << schoolCount << ". ";
-            schoolStudent->display();
-        }
-    }
-    if (schoolCount == 0) {
-        cout << "No school students found." << endl;
-    }
+    displayStudentType<SchoolStudent>("SCHOOL STUDENTS");
+    displayStudentType<UniversityStudent>("UNIVERSITY STUDENTS");
+}
 
-    cout << "\n=== UNIVERSITY STUDENTS ===" << endl;
-    int universityCount = 0;
+template<typename T>
+void Program::displayStudentType(const string& title) const {
+    cout << "\n=== " << title << " ===" << endl;
+    int typeCount = 0;
+    
     for (int i = 0; i < count; i++) {
-        const auto *universityStudent = dynamic_cast<UniversityStudent *>(students[i]);
-        if (universityStudent != nullptr) {
-            universityCount++;
-            cout << universityCount << ". ";
-            universityStudent->display();
+        const auto* student = dynamic_cast<const T*>(students[i]);
+        if (student != nullptr) {
+            typeCount++;
+            cout << typeCount << ". ";
+            student->display();
         }
     }
-    if (universityCount == 0) {
-        cout << "No university students found." << endl;
+    
+    if (typeCount == 0) {
+        cout << "No " << title << " found." << endl;
     }
 }
 

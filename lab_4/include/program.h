@@ -11,7 +11,9 @@ class Program {
 
     Student *createStudent();
     void addStudent();
-    void displayStudents()const;
+    void Program::displayStudents() const;
+    template<typename T>
+    void displayStudentType(const string& title)const;
 
   public:
     Program();
