@@ -84,7 +84,7 @@ void Program::displayStudentType(const string& title) const {
             cout << typeCount << ". ";
             student->display();
         }
-    }
+    } 
     
     if (typeCount == 0) {
         cout << "No " << title << " found." << endl;

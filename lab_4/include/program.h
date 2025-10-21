@@ -11,7 +11,7 @@ class Program {
     void addStudent();
     void Program::displayStudents() const;
     template<typename T>
-    void displayStudentType(const string& title)const;
+    void displayStudentType(const std::string& title)const;
 
   public:
     Program();
