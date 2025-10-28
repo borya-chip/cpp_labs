@@ -36,13 +36,6 @@ void Date::isTrueFormatDate() const {
   }
 }
 
-bool Date::isLeapYear(int year) const {
-  const int baseYear = 2000;
-  int fullYear = baseYear + year;
-  return (fullYear % leapDivisor4 == 0 && fullYear % leapDivisor100 != 0) ||
-         (fullYear % leapDivisor400 == 0);
-}
-
 int Date::getMaxTrueDay(int month, int year) const {
   switch (month) {
     case february:
@@ -55,6 +48,13 @@ int Date::getMaxTrueDay(int month, int year) const {
     default:
       return maxNumberOfDay;
   }
+}
+
+bool Date::isLeapYear(int year) const {
+  const int baseYear = 2000;
+  int fullYear = baseYear + year;
+  return (fullYear % leapDivisor4 == 0 && fullYear % leapDivisor100 != 0) ||
+         (fullYear % leapDivisor400 == 0);
 }
 
 void Date::isTrueDate() const {
