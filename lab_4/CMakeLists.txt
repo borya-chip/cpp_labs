@@ -15,8 +15,8 @@ set(SOURCES
 
 set(HEADERS
     include/school_student.h
-    include/utils.h   
     include/program.h 
+    include/utils.h   
     include/menus.h
     include/university_student.h
     include/student.h
