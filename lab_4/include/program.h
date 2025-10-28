@@ -9,7 +9,7 @@ class Program {
     int count = 0;
     Student *createStudent();
     void addStudent();
-    void Program::displayStudents() const;
+    void displayStudents() const;
     template<typename T>
     void displayStudentType(const std::string& title)const;
 
