@@ -62,7 +62,7 @@ jobs:
         run: |
           rm -rf lab_6/build
           mkdir lab_6/build
-          cmake -S lab_6 -B lab_5/build 
+          cmake -S lab_6 -B lab_6/build 
           build-wrapper-linux-x86-64 --out-dir lab_6/build_wrapper cmake --build lab_6/build --config Release
 
       - name: SonarCloud scan lab_1
