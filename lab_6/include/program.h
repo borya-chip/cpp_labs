@@ -4,9 +4,9 @@
 
 class Program {
     Date date;
-    void testConstructors();
+    void testConstructors() const;
     void testInputDate();
-    void showCurrentDate();
+    void showCurrentDate() const;
     public:
     Program() = default;
     ~Program() = default;

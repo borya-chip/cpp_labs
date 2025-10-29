@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void Program::testConstructors() {
+void Program::testConstructors() const {
     try {
         cout << "Default constructor:";
         Date defaultDate;
@@ -69,7 +69,7 @@ void Program::testInputDate() {
     }
 }
 
-void Program::showCurrentDate() {
+void Program::showCurrentDate() const {
     cout << date << endl;
 }
 
