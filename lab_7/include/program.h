@@ -11,7 +11,7 @@ class Program {
    void addEmployeeToFile();
    void readDataFromFile() ;
    void findNamesBasedOnTheNumberOfHoursWorked();
-   void deleteDataFromFile();
+   void deleteDataFromFile() const;
     public:
     Program() = default;
     ~Program() = default;

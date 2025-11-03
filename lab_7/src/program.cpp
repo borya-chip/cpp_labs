@@ -99,7 +99,7 @@ void Program::findNamesBasedOnTheNumberOfHoursWorked() {
   myEmployeeFinder.seeFullNamesOfEmployeeByHoursWorked(targetHoursWorked);
 }
 
-void Program::deleteDataFromFile() {
+void Program::deleteDataFromFile() const {
   std::cout << "Do you want to delete(y/n):";
   char confirm;
   std::cin >> confirm;
