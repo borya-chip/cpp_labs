@@ -14,6 +14,9 @@ set(SOURCES
 
 set(HEADERS
     include/date.h   
+    include/date_digit_exception.h
+    include/date_format_exception.h
+    include/date_range_exception.h
     include/menu.h 
     include/utils.h
     include/program.h

@@ -1,8 +1,13 @@
 #pragma once
 #include "myexception.h"
+#include "date_format_exception.h"
+#include "date_digit_exception.h"
+#include "date_range_exception.h"
+#include <iostream>
+#include <string>
 
 class Date {
- private:
+private:
   std::string date;
 
   static constexpr int formatSizeDate = 8;
@@ -39,7 +44,7 @@ class Date {
   int getMaxTrueDay(int month, int year) const;
   bool isLeapYear(int year) const;
 
- public:
+public:
   Date() = default;
   explicit Date(const std::string& newDate);
 

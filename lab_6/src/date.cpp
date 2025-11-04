@@ -16,19 +16,19 @@ void Date::isValidDate() const {
 
 void Date::isTrueFormatDate() const {
   if (date.length() != formatSizeDate) {
-    throw DateException(std::format("Invalid format. Should be {} symbols - YY/MM/DD", formatSizeDate));
+    throw DateLengthException(formatSizeDate);
   }
   if (date[firstSeparatorPos] != '/' || date[secondSeparatorPos] != '/') {
-    throw DateException("Invalid format. Should be - YY/MM/DD");
+    throw DateSeparatorException();
   }
   if (!(isdigit(date[firstYearPos]) && isdigit(date[secondYearPos]))) {
-    throw DateException("YY - should be digits");
+    throw YearDigitException();
   }
   if (!(isdigit(date[firstMonthPos]) && isdigit(date[secondMonthPos]))) {
-    throw DateException("MM - should be digits");
+    throw MonthDigitException();
   }
   if (!(isdigit(date[firstDayPos]) && isdigit(date[secondDayPos]))) {
-    throw DateException("DD - should be digits");
+    throw DayDigitException();
   }
 }
 
@@ -63,13 +63,11 @@ void Date::isTrueDate() const {
       (date[firstDayPos] - '0') * decimalBase + (date[secondDayPos] - '0');
   
   if (month > maxNumberOfMonth || month < minNumberOfMonth) {
-    throw DateException(std::format("The number of months cannot exceed {} or be less than {}", 
-                                   maxNumberOfMonth, minNumberOfMonth));
+    throw MonthRangeException(maxNumberOfMonth, minNumberOfMonth);
   }
   
   int maxTrueDayInMonth = getMaxTrueDay(month, year);
   if (day < minNumberOfDay || day > maxTrueDayInMonth) {
-    throw DateException(std::format("The day number for this month must be between {} and {}", 
-                                   minNumberOfDay, maxTrueDayInMonth));
+    throw DayRangeException(minNumberOfDay, maxTrueDayInMonth);
   }
 }
