@@ -1,5 +1,4 @@
-#ifndef MYCONTAINER_H
-#define MYCONTAINER_H
+#pragma once
 
 #include "myexception.h"
 #include "myiterator.h"
@@ -275,5 +274,3 @@ MyContainer<T>::~MyContainer() {
   delete[] data;
   data = nullptr;
 }
-
-#endif

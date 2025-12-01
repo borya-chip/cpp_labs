@@ -1,6 +1,4 @@
-#ifndef MYITERATOR_H
-#define MYITERATOR_H
-
+#pragma once
 #include "myexception.h"
 
 template <typename T>
@@ -156,5 +154,3 @@ bool MyIterator<T>::isValid() const {
   return currentRow >= 0 && currentRow < totalRows && currentCol >= 0 &&
          currentCol < totalCols;
 }
-
-#endif

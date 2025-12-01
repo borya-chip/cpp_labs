@@ -1,6 +1,4 @@
-#ifndef MENU_H
-#define MENU_H
-
+#pragma once
 #include <iostream>
 
 #include "myalgorithm.h"
@@ -126,4 +124,3 @@ void sortMatrix(MyContainer<T>& matrix) {
     std::cout << "Sorting error: " << e.what() << std::endl;
   }
 }
-#endif

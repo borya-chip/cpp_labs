@@ -1,8 +1,5 @@
-#ifndef MYALGORITHM_H
-#define MYALGORITHM_H
-
+#pragma once
 #include <numeric>
-
 #include "mycontainer.h"
 #include "myiterator.h"
 
@@ -136,5 +133,3 @@ void MyAlgorithm<T>::sortContainer(MyContainer<T>& data) {
     throw;
   }
 }
-
-#endif
